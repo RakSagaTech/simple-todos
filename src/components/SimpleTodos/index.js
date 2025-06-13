@@ -43,10 +43,10 @@ const initialTodosList = [
 class SimpleTodos extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <h1> Simple Todos </h1>
-          <ul>
+      <div className="app-container">
+        <div className="simple-todos-container">
+          <h1 className="heading"> Simple Todos </h1>
+          <ul className="todos-list">
             {initialTodosList.map(eachTodo => (
               <TodoItem key={eachTodo.id} todoDetails={eachTodo} />
             ))}
