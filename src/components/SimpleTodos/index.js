@@ -41,14 +41,29 @@ const initialTodosList = [
 // Write your code here
 
 class SimpleTodos extends Component {
+  state = {
+    todosList: initialTodosList,
+  }
+
+  deleteTodo = id => {
+    const {todosList} = this.state
+    const updatedTodoList = todosList.filter(eachTodo => eachTodo.id !== id)
+    this.setState({todosList: updatedTodoList})
+  }
+
   render() {
+    const {todosList} = this.state
     return (
       <div className="app-container">
         <div className="simple-todos-container">
           <h1 className="heading"> Simple Todos </h1>
           <ul className="todos-list">
-            {initialTodosList.map(eachTodo => (
-              <TodoItem key={eachTodo.id} todoDetails={eachTodo} />
+            {todosList.map(eachTodo => (
+              <TodoItem
+                key={eachTodo.id}
+                todoDetails={eachTodo}
+                deleteTodo={this.deleteTodo}
+              />
             ))}
           </ul>
         </div>
